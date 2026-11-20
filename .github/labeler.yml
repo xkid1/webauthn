@@ -1,0 +1,83 @@
+# Labels pull requests from the files they change (pr-labeler.yml). The labels also
+# group the generated release notes (release.yml).
+
+'client':
+  - changed-files:
+      - any-glob-to-any-file: 'src/apps/client-side/**'
+
+'server':
+  - changed-files:
+      - any-glob-to-any-file: 'src/apps/server-side/**'
+
+'android':
+  - changed-files:
+      - any-glob-to-any-file: 'src/apps/android/**'
+
+# Protocol building blocks: CBOR, ASN.1, COSE, crypto, authenticator data, client data.
+'protocol':
+  - changed-files:
+      - all-globs-to-any-file:
+          - 'src/libs/**'
+          - '!src/libs/attestation/**'
+
+'attestation':
+  - changed-files:
+      - any-glob-to-any-file: 'src/libs/attestation/**'
+
+'types':
+  - changed-files:
+      - any-glob-to-any-file: 'src/types/**'
+
+'utils':
+  - changed-files:
+      - any-glob-to-any-file: 'src/utils/**'
+
+# Any non-test source change, so release notes can tell library changes apart.
+'source':
+  - changed-files:
+      - all-globs-to-any-file:
+          - 'src/**/*.ts'
+          - '!src/**/*.test.ts'
+
+'tests':
+  - changed-files:
+      - any-glob-to-any-file:
+          - 'src/**/*.test.ts'
+          - 'testing/**'
+
+'e2e':
+  - changed-files:
+      - any-glob-to-any-file: 'e2e/**'
+
+'benchmarks':
+  - changed-files:
+      - any-glob-to-any-file: 'bench/**'
+
+'ci':
+  - changed-files:
+      - any-glob-to-any-file:
+          - '.github/workflows/**'
+          - '.github/actions/**'
+          - '.github/dependabot.yml'
+          - '.github/labeler.yml'
+          - '.github/release.yml'
+
+'documentation':
+  - changed-files:
+      - any-glob-to-any-file: '**/*.md'
+
+'tooling':
+  - changed-files:
+      - any-glob-to-any-file:
+          - 'package.json'
+          - 'yarn.lock'
+          - 'tsconfig*.json'
+          - '.swcrc'
+          - '.yarnrc.yml'
+          - '.nvmrc'
+          - '.editorconfig'
+          - '.prettierrc.ts'
+          - '.prettierignore'
+          - 'eslint.config.js'
+          - 'vitest.config.ts'
+          - 'scripts/**'

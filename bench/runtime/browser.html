@@ -1,0 +1,38 @@
+<!doctype html>
+<!-- Served by bench/runtimes.mjs and driven by Playwright. Open it from any static
+     server at the repo root to run the suite in your own browser. -->
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>@xkid1/webauthn runtime benchmark</title>
+  </head>
+  <body>
+    <pre id="log">running…</pre>
+    <script type="module">
+      import { runSuite } from './suite.js';
+      import { detectRuntime } from './runtime.js';
+
+      const params = new URLSearchParams(location.search);
+      const out = document.getElementById('log');
+      const log = (line) => (out.textContent += `\n${line}`);
+      try {
+        const coldStart = performance.now();
+        const webauthn = await import('../../dist/index.js');
+        const importMs = performance.now() - coldStart;
+        const { results, skipped } = await runSuite(webauthn, {
+          timeMs: Number(params.get('time') ?? 1000),
+          log,
+        });
+        window.__BENCH_RESULT__ = {
+          runtime: detectRuntime(),
+          importMs,
+          results,
+          skipped,
+        };
+      } catch (error) {
+        window.__BENCH_RESULT__ = { error: String(error?.stack ?? error) };
+      }
+      log('done');
+    </script>
+  </body>
+</html>

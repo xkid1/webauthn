@@ -1,0 +1,14 @@
+{
+  // Editor settings for the plain-JavaScript consumer tests (they run under `node --test`).
+  // The TypeScript consumer is compiled separately with tsconfig.nodenext.json / tsconfig.bundler.json.
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "allowJs": true,
+    "checkJs": false,
+    "types": ["node"],
+    "noEmit": true
+  },
+  "include": ["*.mjs", "fixtures/*.mjs"]
+}

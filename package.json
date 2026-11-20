@@ -1,0 +1,107 @@
+{
+  "name": "@xkid1/webauthn",
+  "version": "0.1.0",
+  "description": "Zero-dependency, security-first WebAuthn / passkeys toolkit for browsers, Node.js, Electron and React Native (Android). Client ceremonies, server verification and Android Credential Manager bridge in one tree-shakeable package.",
+  "keywords": [
+    "webauthn",
+    "passkeys",
+    "fido2",
+    "authentication",
+    "passwordless",
+    "credential-manager",
+    "react-native",
+    "electron",
+    "zero-dependency",
+    "typescript"
+  ],
+  "homepage": "https://github.com/xkid1/webauthn#readme",
+  "bugs": "https://github.com/xkid1/webauthn/issues",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xkid1/webauthn.git"
+  },
+  "license": "MIT",
+  "author": "xkid1",
+  "type": "module",
+  "sideEffects": false,
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    },
+    "./client": {
+      "types": "./dist/apps/client-side/index.d.ts",
+      "import": "./dist/apps/client-side/index.js",
+      "default": "./dist/apps/client-side/index.js"
+    },
+    "./server": {
+      "types": "./dist/apps/server-side/index.d.ts",
+      "import": "./dist/apps/server-side/index.js",
+      "default": "./dist/apps/server-side/index.js"
+    },
+    "./android": {
+      "types": "./dist/apps/android/index.d.ts",
+      "import": "./dist/apps/android/index.js",
+      "default": "./dist/apps/android/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "packageManager": "yarn@4.18.0",
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "clean": "node scripts/clean.mjs",
+    "build": "yarn clean && yarn build:js && yarn build:types && node scripts/rewrite-aliases.mjs",
+    "build:js": "swc src -d dist --strip-leading-paths --config-file .swcrc",
+    "build:types": "tsc -p tsconfig.build.json",
+    "typecheck": "tsc -p tsconfig.json",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "verify:dist": "node scripts/verify-dist.mjs",
+    "e2e": "yarn build && node e2e/run.mjs",
+    "bench": "vitest bench --run",
+    "bench:size": "node bench/size.mjs",
+    "bench:runtimes": "node bench/runtimes.mjs",
+    "check": "yarn typecheck && yarn lint && yarn format:check && yarn test",
+    "prepublishOnly": "yarn check && yarn build && yarn verify:dist"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@swc/cli": "^0.8.2",
+    "@swc/core": "^1.16.22",
+    "@types/node": "^26.6.6",
+    "@vitest/coverage-v8": "^5.1.0",
+    "@vitest/eslint-plugin": "^1.6.28",
+    "eslint": "^10.14.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-import-resolver-typescript": "^4.4.4",
+    "eslint-plugin-import-x": "^4.18.0",
+    "eslint-plugin-n": "^18.5.0",
+    "eslint-plugin-security": "^4.2.1",
+    "globals": "^17.14.0",
+    "jiti": "^2.7.0",
+    "prettier": "^3.9.10",
+    "typescript": "~6.0.3",
+    "typescript-eslint": "^8.72.1",
+    "vite": "^8.3.6",
+    "vitest": "^5.1.0"
+  }
+}

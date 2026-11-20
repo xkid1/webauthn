@@ -1,0 +1,11 @@
+{
+  "everything (import * from root)": 21824,
+  "client: entire entry point": 5760,
+  "client: startRegistration + startAuthentication": 4736,
+  "client: createWebAuthnClient": 5248,
+  "client: isWebAuthnSupported": 192,
+  "server: entire entry point": 17536,
+  "server: createWebAuthnServer + MemoryChallengeStore": 17408,
+  "android: entire entry point": 4544,
+  "android: createAndroidPasskeyClient": 3840
+}

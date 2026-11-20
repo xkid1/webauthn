@@ -1,0 +1,6 @@
+{
+  // Editor / lint entry for the TypeScript consumer. e2e/run.mjs compiles it with
+  // ../tsconfig.nodenext.json and ../tsconfig.bundler.json against the packed package.
+  "extends": "../tsconfig.nodenext.json",
+  "files": ["consumer.ts"]
+}

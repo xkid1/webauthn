@@ -1,0 +1,41 @@
+# deps
+node_modules/
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
+
+# build / test output
+dist/
+coverage/
+*.tsbuildinfo
+*.tgz
+
+# logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# env / editor / os
+.env
+.env.*
+!.env.example
+.vscode/*
+.idea/
+.DS_Store
+Thumbs.db
+
+
+# benchmarks / e2e scratch output
+bench-results/
+e2e/consumer/node_modules/
+e2e/consumer/package-lock.json
+e2e/consumer/pnpm-lock.yaml
+e2e/consumer/.svelte-out/
+e2e/consumer/dist-bundles/
+bench-*.json
+size.json
