@@ -534,10 +534,6 @@ src/
 
 Import aliases: `@apps`, `@libs`, `@types`, `@utils`, one per layer barrel. Use relative imports inside a layer. The build rewrites aliases to relative paths, so the published package needs no resolver.
 
-## Publishing
-
-Push a `vX.Y.Z` tag. `.github/workflows/release.yml` runs the full check and publishes to **npm** (with provenance) and **GitHub Packages**. It needs the `NPM_TOKEN` secret; `GITHUB_TOKEN` is provided automatically.
-
 ## License
 
 MIT © xkid1
