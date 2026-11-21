@@ -16,7 +16,7 @@ name: Publish package
 # npm authentication, in order of preference:
 #   1. Trusted publishing (OIDC): no secret needed. Configure it on npmjs.com under
 #      the package's Settings → Trusted publisher (GitHub Actions, xkid1/webauthn,
-#      release.yml). Provenance is added automatically.
+#      publish.yml). Provenance is added automatically.
 #   2. NPM_TOKEN repository secret (granular token, "Read and write"). Needed for the
 #      very first publish, because trusted publishing can only be configured once the
 #      package exists on npm.
