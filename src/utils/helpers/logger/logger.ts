@@ -1,4 +1,10 @@
-import type { LogLevel, ProcessGlobal, ProcessLike, WritableLevel } from '@types';
+import type {
+  ConsoleGlobal,
+  LogLevel,
+  ProcessGlobal,
+  ProcessLike,
+  WritableLevel,
+} from '@types';
 
 const LEVEL_WEIGHT: Record<LogLevel, number> = {
   debug: 10,
@@ -97,7 +103,12 @@ export class Logger {
   #write(level: WritableLevel, message: unknown, args: unknown[]): void {
     if (LEVEL_WEIGHT[level] < LEVEL_WEIGHT[Logger.getLevel()]) return;
     const method = level === 'info' ? 'log' : level;
-    console[method](this.#prefix(level), message, ...args);
+    // Read through globalThis: the published build has no DOM or Node lib types.
+    (globalThis as ConsoleGlobal).console?.[method](
+      this.#prefix(level),
+      message,
+      ...args,
+    );
   }
 }
 

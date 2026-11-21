@@ -25,6 +25,8 @@ export default defineConfig(
       '.pnp.*',
       '**/*.min.js',
       '**/*.d.ts',
+      // Consumer test apps with their own toolchains (see misc/README.md).
+      'misc/**',
     ],
   },
 

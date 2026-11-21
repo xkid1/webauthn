@@ -25,3 +25,14 @@ export interface ProcessLike {
 export interface ProcessGlobal {
   process?: ProcessLike;
 }
+
+/** The console methods the logger writes to. */
+export type ConsoleLike = Record<
+  'debug' | 'log' | 'warn' | 'error',
+  (...data: unknown[]) => void
+>;
+
+/** `globalThis` viewed as possibly providing `console` (no DOM or Node lib types needed). */
+export interface ConsoleGlobal {
+  console?: ConsoleLike;
+}

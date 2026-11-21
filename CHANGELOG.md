@@ -35,6 +35,7 @@ All notable changes to this project are documented here. The format follows [Kee
 
 - ECDSA certificate chain links now take the curve size from the issuer key, not from the signature OID's hash. A P-256 CA that signs with `ecdsa-with-SHA384` now verifies.
 - The published `dist/types/index.d.ts` imported `./logger/logger` without a `.js` extension, which broke TypeScript users on `NodeNext`/`Node16` resolution. Every type barrel now uses explicit `.js` specifiers.
+- `yarn build` failed while generating declarations (`Cannot find name 'console'` in the internal logger), so the alias rewrite never ran and the packed `dist/` still contained `@types`/`@utils` imports. The logger now reads `console` through `globalThis` with the new `ConsoleLike` / `ConsoleGlobal` types, like the other runtime globals.
 
 ### Changed
 
