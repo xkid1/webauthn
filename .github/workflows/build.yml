@@ -34,7 +34,7 @@ jobs:
   # imports (zero runtime dependencies), every relative import resolves, and every
   # entry point (`.`, `./client`, `./server`, `./android`) loads in Node.
   package:
-    name: Package
+    name: Build
     needs: changes
     if: needs.changes.outputs.code == 'true'
     runs-on: ubuntu-latest

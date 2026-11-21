@@ -49,7 +49,7 @@ name so it can be marked as a required check:
 | `ci.yml`                | `Typecheck`         | `yarn typecheck`                                                                                   | yes         |
 | `ci.yml`                | `Format`            | `yarn format:check`                                                                                | optional    |
 | `test.yml`              | `Test`              | `yarn test:coverage` (85% lines/functions/statements, 75% branches); summary in the job summary    | yes         |
-| `build.yml`             | `Package`           | `yarn build` + `yarn verify:dist`; uploads `dist/` as an artifact                                  | yes         |
+| `build.yml`             | `Build`             | `yarn build` + `yarn verify:dist`; uploads `dist/` as an artifact                                  | yes         |
 | `bench.yml`             | `Size`              | `bench/size.mjs --check`: brotli budgets from `bench/size-budget.json`                             | yes         |
 | `e2e.yml`               | `E2E`               | `yarn e2e` on Node 20, 22, 24 and 26 (one summary check over the matrix)                           | yes         |
 | `codeql.yml`            | `Analyze (…)`       | CodeQL for TypeScript/JavaScript and for the workflows themselves                                  | recommended |
@@ -129,7 +129,7 @@ These can't be set from workflow files. A repository admin sets them once:
 1. **Branch ruleset for `main`**: **Settings → Rules → Rulesets → New branch ruleset**.
    Target the default branch, set **Enforcement status** to **Active**, and enable:
    - **Require a pull request before merging**
-   - **Require status checks to pass**, adding `Lint`, `Typecheck`, `Test`, `Package`,
+   - **Require status checks to pass**, adding `Lint`, `Typecheck`, `Test`, `Build`,
      `Size`, `E2E` and `Dependency review` (optionally `Format`, `PR title` and the CodeQL
      checks). A check can only be selected after it has run once, so open a PR first.
    - Optionally **Require branches to be up to date before merging**
