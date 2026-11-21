@@ -3,22 +3,22 @@ import { webcrypto } from 'node:crypto';
 import { describe, expect, it } from 'vitest';
 
 import { WebAuthnError } from '@utils';
+
 import {
   ATTESTATION_SUBJECT,
   makeCertificate,
   makeTestRoot,
   ROOT_SUBJECT,
   testCrypto,
-} from '../../../tests/index.js';
-
-import { COSEAlgorithm, getAlgorithmSpec } from '../cose/index.js';
+} from '../../../tests';
+import { COSEAlgorithm, getAlgorithmSpec } from '../cose';
 
 import {
   getCertificateAaguid,
   importCertificateKey,
   isCertificateAuthority,
   parseCertificate,
-} from './x509.js';
+} from './x509';
 
 describe('X.509', () => {
   it('parses version, subject, CA flag and the FIDO AAGUID extension', async () => {

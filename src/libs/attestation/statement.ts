@@ -1,6 +1,6 @@
 import { WebAuthnError } from '@utils';
 
-import { decodeCbor, isCborMap } from '../cbor/index.js';
+import { decodeCbor, isCborMap } from '../cbor';
 
 import type { AttestationObject, CborMap, CborValue } from '@types';
 

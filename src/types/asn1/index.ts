@@ -1,1 +1,1 @@
-export type * from './asn1.js';
+export type * from './asn1';

@@ -1,1 +1,1 @@
-export type * from './android.js';
+export type * from './android';

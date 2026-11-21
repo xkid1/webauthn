@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest';
 
 import { concatBytes, WebAuthnError } from '@utils';
 
-import { decodeCbor, decodeCborFirst } from './decoder.js';
+import { decodeCbor, decodeCborFirst } from './decoder';
 
 describe('decodeCbor', () => {
   it('rejects indefinite lengths, tags, duplicates and trailing bytes', () => {

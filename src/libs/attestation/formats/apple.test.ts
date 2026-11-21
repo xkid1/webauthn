@@ -8,9 +8,9 @@ import {
   rejection,
   type TestCertificate,
   verifyStatement,
-} from '../../../../tests/index.js';
+} from '../../../../tests';
 
-import { verifyAppleAttestation } from './apple.js';
+import { verifyAppleAttestation } from './apple';
 
 describe('apple attestation (§8.8)', () => {
   attestationTrustSuite({

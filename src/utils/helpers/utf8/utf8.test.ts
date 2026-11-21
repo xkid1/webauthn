@@ -1,8 +1,8 @@
 import { describe, expect, it } from 'vitest';
 
-import { WebAuthnError } from '../error/index.js';
+import { WebAuthnError } from '../error';
 
-import { utf8Decode, utf8Encode } from './utf8.js';
+import { utf8Decode, utf8Encode } from './utf8';
 
 describe('utf8', () => {
   it('round-trips multilingual text and emoji', () => {

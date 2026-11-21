@@ -1,8 +1,8 @@
 import { describe, expect, it } from 'vitest';
 
-import { encodeCbor } from '../cbor/index.js';
+import { encodeCbor } from '../cbor';
 
-import { parseCoseKey } from './key.js';
+import { parseCoseKey } from './key';
 
 import type { CborValue } from '@types';
 

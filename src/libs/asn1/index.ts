@@ -6,9 +6,9 @@ export {
   readChildren,
   readTlv,
   Tag,
-} from './der.js';
-export { OID, SIGNATURE_ALGORITHMS } from './oids.js';
-export { certificateKeyMatchesCose } from './spki.js';
+} from './der';
+export { OID, SIGNATURE_ALGORITHMS } from './oids';
+export { certificateKeyMatchesCose } from './spki';
 export {
   getCertificateAaguid,
   getExtendedKeyUsage,
@@ -19,4 +19,4 @@ export {
   isCertificateAuthority,
   parseCertificate,
   signatureSpecFor,
-} from './x509.js';
+} from './x509';

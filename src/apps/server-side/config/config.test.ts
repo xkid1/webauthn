@@ -1,8 +1,8 @@
 import { describe, expect, it } from 'vitest';
 
-import { TEST_RP as base } from '../../../../tests/index.js';
+import { TEST_RP as base } from '../../../../tests';
 
-import { resolveConfig } from './config.js';
+import { resolveConfig } from './config';
 
 import type { RelyingPartyConfig } from '@types';
 

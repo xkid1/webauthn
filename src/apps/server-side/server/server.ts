@@ -3,12 +3,9 @@ import { WebAuthnError } from '@utils';
 import {
   generateAuthenticationOptions,
   verifyAuthenticationResponse,
-} from '../authentication/index.js';
-import { resolveConfig } from '../config/index.js';
-import {
-  generateRegistrationOptions,
-  verifyRegistrationResponse,
-} from '../registration/index.js';
+} from '../authentication';
+import { resolveConfig } from '../config';
+import { generateRegistrationOptions, verifyRegistrationResponse } from '../registration';
 
 import type {
   Base64URLString,

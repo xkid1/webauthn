@@ -1,4 +1,4 @@
-import { getErrorHint } from './hints.js';
+import { getErrorHint } from './hints';
 
 import type {
   WebAuthnErrorCode,

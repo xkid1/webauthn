@@ -1,11 +1,11 @@
 import { afterEach, describe, expect, it, vi } from 'vitest';
 
 import { createWebAuthnServer } from '@apps';
-import { installBrowser, SoftAuthenticator, TEST_RP } from '../../../../tests/index.js';
 
-import { cancelCeremony } from '../ceremony/index.js';
+import { installBrowser, SoftAuthenticator, TEST_RP } from '../../../../tests';
+import { cancelCeremony } from '../ceremony';
 
-import { startRegistration } from './registration.js';
+import { startRegistration } from './registration';
 
 afterEach(() => {
   vi.unstubAllGlobals();

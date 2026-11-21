@@ -1,17 +1,17 @@
 import { afterEach, describe, expect, it, vi } from 'vitest';
 
 import { createWebAuthnServer, MemoryChallengeStore } from '@apps';
+
 import {
   type AnyRecord,
   installBrowser,
   ORIGIN,
   RP_ID,
   SoftAuthenticator,
-} from '../../../../tests/index.js';
+} from '../../../../tests';
+import { cancelCeremony } from '../ceremony';
 
-import { cancelCeremony } from '../ceremony/index.js';
-
-import { createWebAuthnClient } from './client.js';
+import { createWebAuthnClient } from './client';
 
 import type { AuthenticationResponseJSON, FetchLike, StoredCredential } from '@types';
 

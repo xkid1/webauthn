@@ -1,8 +1,8 @@
 import { describe, expect, it } from 'vitest';
 
-import { attestationContext } from '../../../tests/index.js';
+import { attestationContext } from '../../../tests';
 
-import { BUILT_IN_ATTESTATION_VERIFIERS, verifyAttestationStatement } from './verify.js';
+import { BUILT_IN_ATTESTATION_VERIFIERS, verifyAttestationStatement } from './verify';
 
 import type { AttestationVerifier } from '@types';
 

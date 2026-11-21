@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 
-import { WebAuthnError } from '../error/index.js';
+import { WebAuthnError } from '../error';
 
 import {
   bufferToBytes,
@@ -12,7 +12,7 @@ import {
   readUint32BE,
   timingSafeEqual,
   toHex,
-} from './bytes.js';
+} from './bytes';
 
 describe('bytes', () => {
   it('compares in constant time semantics', () => {

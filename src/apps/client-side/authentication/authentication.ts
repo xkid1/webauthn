@@ -1,12 +1,12 @@
 import { WebAuthnError } from '@utils';
 
-import { beginCeremony, toCeremonyError } from '../ceremony/index.js';
+import { beginCeremony, toCeremonyError } from '../ceremony';
 import {
   countWebAuthnInputs,
   getCredentialsContainer,
   getPublicKeyCredential,
-} from '../environment/index.js';
-import { authenticationToJSON, toRequestOptions } from '../serialize/index.js';
+} from '../environment';
+import { authenticationToJSON, toRequestOptions } from '../serialize';
 
 import type { AuthenticationResponseJSON, StartAuthenticationOptions } from '@types';
 

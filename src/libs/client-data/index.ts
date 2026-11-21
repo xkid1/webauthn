@@ -1,1 +1,1 @@
-export { parseClientDataJSON, verifyClientData } from './client-data.js';
+export { parseClientDataJSON, verifyClientData } from './client-data';

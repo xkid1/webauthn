@@ -4,6 +4,7 @@ import { describe, expect, it } from 'vitest';
 
 import { COSEAlgorithm, decodeCbor, encodeCbor } from '@libs';
 import { fromBase64Url, toBase64Url } from '@utils';
+
 import {
   type Alg,
   ATTESTATION_SUBJECT,
@@ -16,14 +17,10 @@ import {
   RP_ID,
   SoftAuthenticator,
   TEST_USER as user,
-} from '../../../../tests/index.js';
+} from '../../../../tests';
+import { resolveConfig } from '../config';
 
-import { resolveConfig } from '../config/index.js';
-
-import {
-  generateRegistrationOptions,
-  verifyRegistrationResponse,
-} from './registration.js';
+import { generateRegistrationOptions, verifyRegistrationResponse } from './registration';
 
 import type { AttestationVerifier, CborValue } from '@types';
 

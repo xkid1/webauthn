@@ -3,7 +3,7 @@ import type {
   PublicKeyCredentialCreationOptionsJSON,
   PublicKeyCredentialRequestOptionsJSON,
   RegistrationResponseJSON,
-} from '../webauthn/index.js';
+} from '../webauthn';
 
 /**
  * Contract a React Native native module (Kotlin, using androidx.credentials

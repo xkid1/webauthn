@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 
-import { ensure, isWebAuthnError, WebAuthnError } from './error.js';
-import { ERROR_HINTS, getErrorHint } from './hints.js';
+import { ensure, isWebAuthnError, WebAuthnError } from './error';
+import { ERROR_HINTS, getErrorHint } from './hints';
 
 import type { WebAuthnErrorCode } from '@types';
 

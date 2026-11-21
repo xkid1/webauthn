@@ -6,7 +6,7 @@ import {
   androidOriginFromFingerprint,
   fingerprintFromAndroidOrigin,
   isAndroidOrigin,
-} from './origin.js';
+} from './origin';
 
 const FINGERPRINT = createHash('sha256')
   .update('release-key')

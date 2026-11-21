@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 
-import { decodeCbor } from './decoder.js';
-import { encodeCbor } from './encoder.js';
+import { decodeCbor } from './decoder';
+import { encodeCbor } from './encoder';
 
 import type { CborValue } from '@types';
 

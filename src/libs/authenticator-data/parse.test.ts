@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest';
 
 import { concatBytes, WebAuthnError } from '@utils';
 
-import { parseAuthenticatorData } from './parse.js';
+import { parseAuthenticatorData } from './parse';
 
 describe('parseAuthenticatorData', () => {
   const header = (flags: number) =>

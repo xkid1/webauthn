@@ -5,9 +5,9 @@ import {
   makeCertificate,
   makeTestRoot,
   type TestCertificate,
-} from '../../../../tests/index.js';
+} from '../../../../tests';
 
-import { verifyFidoU2fAttestation } from './fido-u2f.js';
+import { verifyFidoU2fAttestation } from './fido-u2f';
 
 describe('fido-u2f attestation (§8.6)', () => {
   let root: TestCertificate;

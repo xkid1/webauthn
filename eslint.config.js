@@ -11,7 +11,11 @@ import tseslint from 'typescript-eslint';
 
 const TS_FILES = ['**/*.{ts,mts,cts}'];
 const TEST_FILES = ['**/*.{test,spec}.ts', 'test/**/*.ts'];
-const CONFIG_FILES = ['*.config.{ts,mts,js,mjs,cjs}', 'eslint.config.ts'];
+const CONFIG_FILES = [
+  '*.config.{ts,mts,js,mjs,cjs}',
+  'eslint.config.ts',
+  '.prettierrc.ts',
+];
 
 export default defineConfig(
   // ───────────── Ignores (was "ignorePatterns") ─────────────
@@ -292,6 +296,28 @@ export default defineConfig(
     files: ['**/*.{js,mjs,cjs}', ...CONFIG_FILES],
     extends: [tseslint.configs.disableTypeChecked],
     rules: { 'import-x/no-unresolved': 'off' },
+  },
+
+  // ───────────── e2e consumer: no type-aware linting ─────────────
+  // e2e/consumer imports the *published* package (`@xkid1/webauthn`), which only resolves
+  // after `yarn build` (self-reference through package.json "exports" → dist/). In CI the
+  // lint job runs on a fresh checkout without dist/, so type-aware rules would see every
+  // import as `any`. `yarn e2e` type-checks these files against the installed tarball.
+  {
+    files: ['e2e/consumer/**/*.{ts,mts,cts}'],
+    extends: [tseslint.configs.disableTypeChecked],
+  },
+
+  // ───────────── src/: extensionless imports ─────────────
+  // Library code imports without extensions ('./decoder'); swc (`resolveFully`) and
+  // scripts/rewrite-aliases.mjs add the '.js' that Node ESM needs when building dist/.
+  {
+    files: ['src/**/*.ts'],
+    rules: {
+      'import-x/extensions': ['error', 'never', { json: 'always' }],
+      // Import barrels by folder ('../config'), never '../config/index'.
+      'import-x/no-useless-path-segments': ['error', { noUselessIndex: true }],
+    },
   },
 
   // ───────────── Tests ─────────────

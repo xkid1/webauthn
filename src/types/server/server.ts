@@ -1,5 +1,5 @@
-import type { CborMap } from '../cbor/index.js';
-import type { CryptoLike } from '../runtime/index.js';
+import type { CborMap } from '../cbor';
+import type { CryptoLike } from '../runtime';
 import type {
   AttestationConveyancePreference,
   AuthenticationExtensionsClientInputs,
@@ -14,7 +14,7 @@ import type {
   PublicKeyCredentialRequestOptionsJSON,
   RegistrationResponseJSON,
   UserVerificationRequirement,
-} from '../webauthn/index.js';
+} from '../webauthn';
 
 // ---------------------------------------------------------------------------
 // Parsed authenticator structures

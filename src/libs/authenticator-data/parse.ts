@@ -1,6 +1,6 @@
 import { readUint16BE, readUint32BE, WebAuthnError } from '@utils';
 
-import { decodeCborFirst, isCborMap } from '../cbor/index.js';
+import { decodeCborFirst, isCborMap } from '../cbor';
 
 import type { AuthenticatorFlags, ParsedAuthenticatorData } from '@types';
 

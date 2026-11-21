@@ -2,19 +2,19 @@ import { describe, expect, it } from 'vitest';
 
 import { COSEAlgorithm } from '@libs';
 import { toBase64Url } from '@utils';
+
 import {
   TEST_RP as base,
   FLAGS,
   registerCredential,
   type SoftAuthenticator,
-} from '../../../../tests/index.js';
-
-import { resolveConfig } from '../config/index.js';
+} from '../../../../tests';
+import { resolveConfig } from '../config';
 
 import {
   generateAuthenticationOptions,
   verifyAuthenticationResponse,
-} from './authentication.js';
+} from './authentication';
 
 describe('verifyAuthenticationResponse', () => {
   const config = resolveConfig(base);

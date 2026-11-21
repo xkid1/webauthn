@@ -1,8 +1,8 @@
 import { isRecord, WebAuthnError } from '@utils';
 
-import { startAuthentication } from '../authentication/index.js';
-import { cancelCeremony } from '../ceremony/index.js';
-import { startRegistration } from '../registration/index.js';
+import { startAuthentication } from '../authentication';
+import { cancelCeremony } from '../ceremony';
+import { startRegistration } from '../registration';
 
 import type {
   AuthenticationResponseJSON,

@@ -20,12 +20,12 @@ import {
   WebAuthnError,
 } from '@utils';
 
-import { makeChallenge } from '../challenge/index.js';
+import { makeChallenge } from '../challenge';
 import {
   assertRegistrationResponse,
   sanitizeTransports,
   toDescriptors,
-} from '../response/index.js';
+} from '../response';
 
 import type {
   AuthenticatorSelectionCriteria,

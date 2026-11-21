@@ -1,2 +1,2 @@
-export { ensure, isWebAuthnError, WebAuthnError } from './error.js';
-export { ERROR_HINTS, getErrorHint } from './hints.js';
+export { ensure, isWebAuthnError, WebAuthnError } from './error';
+export { ERROR_HINTS, getErrorHint } from './hints';

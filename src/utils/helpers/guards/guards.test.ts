@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 
-import { isValidOrigin, isValidRpId } from './guards.js';
+import { isValidOrigin, isValidRpId } from './guards';
 
 describe('guards', () => {
   it.each([

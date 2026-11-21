@@ -1,4 +1,4 @@
-import { WebAuthnError } from '../error/index.js';
+import { WebAuthnError } from '../error';
 
 import type { Base64URLString } from '@types';
 

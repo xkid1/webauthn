@@ -1,1 +1,1 @@
-export * from './passkeys.js';
+export * from './passkeys';

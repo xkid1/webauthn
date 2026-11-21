@@ -1,4 +1,4 @@
-import { WebAuthnError } from '../error/index.js';
+import { WebAuthnError } from '../error';
 
 /**
  * Self-contained UTF-8 codec. TextEncoder/TextDecoder are not guaranteed on

@@ -1,8 +1,7 @@
 import { afterEach, describe, expect, it, vi } from 'vitest';
 
-import { installBrowser, RP_ID, SoftAuthenticator } from '../../../../tests/index.js';
-
-import { startRegistration } from '../registration/index.js';
+import { installBrowser, RP_ID, SoftAuthenticator } from '../../../../tests';
+import { startRegistration } from '../registration';
 
 import {
   getClientCapabilities,
@@ -10,7 +9,7 @@ import {
   isPlatformAuthenticatorAvailable,
   isWebAuthnSupported,
   signals,
-} from './support.js';
+} from './support';
 
 afterEach(() => {
   vi.unstubAllGlobals();

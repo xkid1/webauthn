@@ -1,1 +1,1 @@
-export * from './support.js';
+export * from './support';

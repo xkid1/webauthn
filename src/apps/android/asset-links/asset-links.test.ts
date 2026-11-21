@@ -2,7 +2,7 @@ import { createHash } from 'node:crypto';
 
 import { describe, expect, it } from 'vitest';
 
-import { buildAssetLinks } from './asset-links.js';
+import { buildAssetLinks } from './asset-links';
 
 const FINGERPRINT = createHash('sha256')
   .update('release-key')
