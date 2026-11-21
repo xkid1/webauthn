@@ -42,14 +42,6 @@
     /* Emit: type-check only; see tsconfig.build.json for declarations */
     "noEmit": true
   },
-  "include": [
-    "src",
-    "tests",
-    "bench",
-    "scripts",
-    "demo",
-    "vitest.config.ts",
-    "vite.config.ts"
-  ],
+  "include": ["src", "tests", "bench", "scripts", "vitest.config.ts", "vite.config.ts"],
   "exclude": ["node_modules", "dist", "build", "coverage"]
 }

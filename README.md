@@ -43,6 +43,11 @@ Zero-dependency, security-first **WebAuthn / passkeys** for every runtime: brows
 - **Up to date with WebAuthn Level 3.** It supports JSON serialisation, `hints`, conditional mediation (passkey autofill), conditional create (auto-register), `getClientCapabilities()` and the Signal API.
 - **Framework-agnostic and SSR-safe.** It works with React, Next.js, Vue, Nuxt, Angular, Svelte/SvelteKit, Solid, Electron and React Native. Importing it never touches `window`.
 
+<p align="center">
+  <img src="./docs/assets/demo.gif" alt="Demo: registering a passkey, signing in, changing the advanced settings, then registering and signing in again with those settings" width="640" />
+</p>
+<p align="center"><sub>The local demo (<code>yarn demo</code>). See <a href="#demo">Demo</a>.</sub></p>
+
 ---
 
 ## Install
@@ -461,11 +466,167 @@ Report vulnerabilities privately; see [SECURITY.md](./SECURITY.md).
 
 ---
 
+## Demo
+
+The repository includes a demo app for trying passkeys in a real browser. Clone the repository, then run:
+
+```bash
+yarn install
+yarn demo
+```
+
+Open <http://localhost:5173>. Use `localhost`, not `127.0.0.1` or a LAN IP: WebAuthn needs a secure context, and the demo server accepts only that exact origin. To run a second instance, set another port: `DEMO_PORT=5174 yarn demo`.
+
+The page in `demo/` uses `@xkid1/webauthn/client` (`createWebAuthnClient`, `startAuthentication`, `getClientCapabilities`, `cancelCeremony` and the error helpers). The relying party is a small in-memory server built from `@xkid1/webauthn/server` and mounted on the Vite dev server (`vite.config.ts`). Users, passkeys and sessions are lost when the server stops.
+
+On the page you can:
+
+- **Register passkey:** create a passkey for the username.
+- **Sign in:** sign in with that user's passkeys.
+- **Sign in (discoverable):** sign in without a username; the browser shows the passkeys it has for this site.
+- **Offer passkeys in username autofill:** sign in through conditional mediation (`useBrowserAutofill: true`).
+- **Cancel:** abort the pending ceremony with `cancelCeremony()`.
+- **Remove / Remove all:** delete one passkey, or all of a user's passkeys, from the demo server. The page also calls `signals.unknownCredential()` so browsers that support the Signal API can hide or delete the passkey on the device.
+- **Refresh:** reload the list of users and passkeys stored on the demo server.
+
+The **Log** shows the options the server generated for each ceremony, the verification result, and the `code` and hint of any `WebAuthnError`.
+
+### Advanced settings
+
+Open **Advanced Settings** to change the options the server generates. The settings are saved in your browser; **Reset to defaults** restores them. Each option is listed below with the value it sends and what it does. Defaults are marked **(default)**.
+
+#### Registration settings
+
+**User Verification**, sent as `authenticatorSelection.userVerification`
+
+| Option | Value | What it does |
+| --- | --- | --- |
+| Required | `required` | The authenticator must verify the user with a PIN, fingerprint or face. Verification also rejects a response without the UV flag (`requireUserVerification: true`). |
+| Preferred **(default)** | `preferred` | Verify the user if the authenticator can. A response without UV is still accepted. |
+| Discouraged | `discouraged` | Ask the authenticator to skip user verification (only a touch, user presence). |
+
+**Attachment**, sent as `authenticatorSelection.authenticatorAttachment`
+
+| Option | Value | What it does |
+| --- | --- | --- |
+| All Supported **(default)** | not sent | Any authenticator can be used. |
+| Platform | `platform` | Only the device's built-in authenticator, such as Touch ID, Windows Hello or Android biometrics. |
+| Cross-Platform | `cross-platform` | Only roaming authenticators, such as a USB/NFC security key or a phone (hybrid). |
+
+**Discoverable Credential**, sent as `authenticatorSelection.residentKey`
+
+| Option | Value | What it does |
+| --- | --- | --- |
+| Required | `required` | The authenticator must store a discoverable credential (a passkey). Registration fails if it cannot. Also sets `requireResidentKey: true`. |
+| Preferred **(default)** | `preferred` | Create a discoverable credential if the authenticator supports it. |
+| Discouraged | `discouraged` | Prefer a non-discoverable credential. Sign-in then needs a username, so **Sign in (discoverable)** will not find it. |
+
+**Attestation**, sent as `attestation`
+
+| Option | Value | What it does |
+| --- | --- | --- |
+| None **(default)** | `none` | No attestation is requested. Best for privacy and what most sites need. |
+| Indirect | `indirect` | Attestation is wanted, but the browser may replace it with an anonymised one. |
+| Direct | `direct` | Return the authenticator's own attestation statement (for example `packed`, `tpm`, `apple` or `android-key`). |
+| Enterprise | `enterprise` | Request attestation that can identify the individual device. Browsers only honour this for sites allowed by enterprise policy; otherwise it behaves like Direct or None. |
+
+The demo verifies every built-in format (`none`, `packed`, `fido-u2f`, `tpm`, `android-key`, `android-safetynet`, `apple`). It configures no trust anchors, so the result reports `trusted: false` for attested credentials.
+
+**Supported Public Key Algorithms (most to least preferred)**, sent as `supportedAlgorithms`, which becomes `pubKeyCredParams`
+
+| Option | COSE ID | Algorithm |
+| --- | ---: | --- |
+| EdDSA **(default)** | `-8` | EdDSA over Ed25519 |
+| Ed25519 | `-19` | Ed25519, fully specified identifier |
+| ES256 **(default)** | `-7` | ECDSA P-256 with SHA-256 |
+| ES384 | `-35` | ECDSA P-384 with SHA-384 |
+| ES512 | `-36` | ECDSA P-521 with SHA-512 |
+| PS256 | `-37` | RSASSA-PSS with SHA-256 |
+| RS256 **(default)** | `-257` | RSASSA-PKCS1-v1_5 with SHA-256 |
+
+The order you tick the boxes in is the preference order (shown as `Order: [...]`); the default is `["eddsa", "es256", "rs256"]`. At least one algorithm must be selected. Verification rejects a credential that uses an algorithm that was not requested. ML-DSA is not listed because the library does not support it yet.
+
+**Registration Hints (most to least preferred)**, sent as `hints`
+
+| Option | Value | What it does |
+| --- | --- | --- |
+| Security Key | `security-key` | Suggest the browser offers a physical security key first. |
+| Client Device | `client-device` | Suggest the browser offers this device's built-in authenticator first. |
+| Hybrid | `hybrid` | Suggest the browser offers signing in with a phone (QR code / Bluetooth) first. |
+
+None are ticked by default, so no `hints` are sent. The order you tick them in is the order sent. Hints only guide the browser's UI and browsers may ignore them.
+
+#### Authentication settings
+
+**User Verification**, sent as `userVerification` in the request options
+
+| Option | Value | What it does |
+| --- | --- | --- |
+| Required | `required` | The user must be verified to sign in. Verification also rejects an assertion without the UV flag (`requireUserVerification: true`). |
+| Preferred **(default)** | `preferred` | Verify the user if the authenticator can. |
+| Discouraged | `discouraged` | Ask the authenticator to skip user verification. |
+
+**Authentication Hints (most to least preferred)**, sent as `hints`
+
+| Option | Value | What it does |
+| --- | --- | --- |
+| Security Key | `security-key` | Suggest a physical security key first. |
+| Client Device | `client-device` | Suggest this device's built-in authenticator first. |
+| Hybrid | `hybrid` | Suggest signing in with a phone first. |
+
+None are ticked by default. The order you tick them in is the order sent.
+
+The server keeps the settings from each options request and uses those at verification, so a client cannot loosen them by sending different settings with the response. In your own server, the same settings look like this:
+
+```ts
+const webauthn = createWebAuthnServer({
+  rpId: 'example.com',
+  rpName: 'Example',
+  origins: ['https://example.com'],
+  supportedAlgorithms: [-8, -7, -35], // EdDSA, ES256, ES384 (most to least preferred)
+  challengeStore: new MemoryChallengeStore(),
+});
+
+// Registration
+const options = await webauthn.generateRegistrationOptions({
+  sessionKey,
+  user: { name: 'alice' },
+  authenticatorSelection: {
+    userVerification: 'required',
+    authenticatorAttachment: 'platform',
+    residentKey: 'required',
+  },
+  attestation: 'direct',
+  hints: ['client-device'],
+});
+const registration = await webauthn.verifyRegistration({
+  sessionKey,
+  response,
+  requireUserVerification: true,
+});
+
+// Authentication
+const requestOptions = await webauthn.generateAuthenticationOptions({
+  sessionKey,
+  userVerification: 'required',
+  hints: ['security-key'],
+});
+const authentication = await webauthn.verifyAuthentication({
+  sessionKey,
+  response,
+  credential,
+  requireUserVerification: true,
+});
+```
+
+---
+
 ## Development
 
 ```bash
 corepack enable
 yarn install
+yarn demo           # local demo app at http://localhost:5173 (see "Demo")
 yarn check          # typecheck + lint + format + tests
 yarn test:coverage
 yarn build          # swc (JS) + tsc (d.ts) + alias rewrite

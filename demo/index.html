@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>@xkid1/webauthn · client demo</title>
+    <link
+      rel="stylesheet"
+      href="./style.css"
+    />
+  </head>
+  <body>
+    <main>
+      <header>
+        <h1>@xkid1/webauthn</h1>
+        <p class="sub">
+          Client-side demo. Ceremonies run in this browser; the relying party is an
+          in-memory dev server built from <code>@xkid1/webauthn/server</code>.
+        </p>
+      </header>
+
+      <section class="card">
+        <h2>Environment</h2>
+        <ul
+          id="support"
+          class="support"
+        ></ul>
+      </section>
+
+      <section class="card">
+        <h2>Passkey</h2>
+        <form
+          id="form"
+          autocomplete="on"
+        >
+          <label for="username">Username</label>
+          <input
+            id="username"
+            name="username"
+            type="text"
+            autocomplete="username webauthn"
+            placeholder="alice"
+            maxlength="64"
+          />
+          <div class="actions">
+            <button
+              type="button"
+              id="register"
+            >
+              Register passkey
+            </button>
+            <button
+              type="button"
+              id="login"
+            >
+              Sign in
+            </button>
+            <button
+              type="button"
+              id="login-any"
+              class="secondary"
+            >
+              Sign in (discoverable)
+            </button>
+            <button
+              type="button"
+              id="cancel"
+              class="ghost"
+            >
+              Cancel
+            </button>
+          </div>
+          <label class="check">
+            <input
+              id="autofill"
+              type="checkbox"
+            />
+            Offer passkeys in username autofill (conditional UI)
+          </label>
+        </form>
+      </section>
+
+      <details
+        class="card advanced"
+        id="advanced"
+      >
+        <summary>Advanced Settings</summary>
+
+        <h3>Registration Settings</h3>
+        <div class="grid">
+          <label>
+            User Verification
+            <select id="reg-uv">
+              <option value="required">Required</option>
+              <option value="preferred">Preferred</option>
+              <option value="discouraged">Discouraged</option>
+            </select>
+          </label>
+          <label>
+            Attachment
+            <select id="reg-attachment">
+              <option value="all">All Supported</option>
+              <option value="platform">Platform</option>
+              <option value="cross-platform">Cross-Platform</option>
+            </select>
+          </label>
+          <label>
+            Discoverable Credential
+            <select id="reg-resident-key">
+              <option value="required">Required</option>
+              <option value="preferred">Preferred</option>
+              <option value="discouraged">Discouraged</option>
+            </select>
+          </label>
+          <label>
+            Attestation
+            <select id="reg-attestation">
+              <option value="none">None</option>
+              <option value="indirect">Indirect</option>
+              <option value="direct">Direct</option>
+              <option value="enterprise">Enterprise</option>
+            </select>
+          </label>
+        </div>
+
+        <fieldset>
+          <legend>Supported Public Key Algorithms (most to least preferred)</legend>
+          <div id="reg-algorithms"></div>
+        </fieldset>
+        <fieldset>
+          <legend>Registration Hints (most to least preferred)</legend>
+          <div id="reg-hints"></div>
+        </fieldset>
+
+        <h3>Authentication Settings</h3>
+        <div class="grid">
+          <label>
+            User Verification
+            <select id="auth-uv">
+              <option value="required">Required</option>
+              <option value="preferred">Preferred</option>
+              <option value="discouraged">Discouraged</option>
+            </select>
+          </label>
+        </div>
+        <fieldset>
+          <legend>Authentication Hints (most to least preferred)</legend>
+          <div id="auth-hints"></div>
+        </fieldset>
+
+        <button
+          type="button"
+          id="reset-settings"
+          class="ghost small"
+        >
+          Reset to defaults
+        </button>
+      </details>
+
+      <section class="card">
+        <div class="row">
+          <h2>Registered on the demo server</h2>
+          <div class="row-actions">
+            <span
+              id="refreshed"
+              class="muted small-text"
+              aria-live="polite"
+            ></span>
+            <button
+              type="button"
+              id="refresh"
+              class="ghost small"
+            >
+              Refresh
+            </button>
+          </div>
+        </div>
+        <p class="muted small-text">
+          Removing a passkey here deletes it from the demo server. Browsers that support
+          the Signal API are also told, so they can hide or delete it on this device.
+        </p>
+        <ul
+          id="users"
+          class="users"
+        ></ul>
+      </section>
+
+      <section class="card">
+        <div class="row">
+          <h2>Log</h2>
+          <button
+            type="button"
+            id="clear"
+            class="ghost small"
+          >
+            Clear
+          </button>
+        </div>
+        <ol
+          id="log"
+          class="log"
+        ></ol>
+      </section>
+    </main>
+    <script
+      type="module"
+      src="./main.ts"
+    ></script>
+  </body>
+</html>
