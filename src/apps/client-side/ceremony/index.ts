@@ -1,1 +1,1 @@
-export * from './ceremony.js';
+export * from './ceremony';

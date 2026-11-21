@@ -1,5 +1,5 @@
-import type { CborMap } from '../cbor/index.js';
-import type { CryptoLike } from '../runtime/index.js';
+import type { CborMap } from '../cbor';
+import type { CryptoLike } from '../runtime';
 
 /** The decoded top-level attestationObject map. */
 export interface AttestationObject {

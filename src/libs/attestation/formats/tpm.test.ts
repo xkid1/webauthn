@@ -9,11 +9,10 @@ import {
   tpmAttestation,
   type TpmTamper,
   verifyStatement,
-} from '../../../../tests/index.js';
+} from '../../../../tests';
+import { COSEAlgorithm } from '../../cose';
 
-import { COSEAlgorithm } from '../../cose/index.js';
-
-import { verifyTpmAttestation } from './tpm.js';
+import { verifyTpmAttestation } from './tpm';
 
 describe('tpm attestation (§8.3)', () => {
   attestationTrustSuite({

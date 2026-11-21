@@ -1,4 +1,4 @@
-import type { AbortSignalLike } from '../runtime/index.js';
+import type { AbortSignalLike } from '../runtime';
 
 /**
  * Structural views of the browser globals we use. Reading them through

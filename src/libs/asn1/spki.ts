@@ -1,7 +1,7 @@
 import { concatBytes, timingSafeEqual } from '@utils';
 
-import { OID } from './oids.js';
-import { parseRsaPublicKey, subjectPublicKey } from './public-key.js';
+import { OID } from './oids';
+import { parseRsaPublicKey, subjectPublicKey } from './public-key';
 
 import type { CosePublicKey, X509Certificate } from '@types';
 

@@ -11,9 +11,9 @@ import {
   readTlv,
   Tag,
   whole,
-} from './der.js';
-import { CURVE_BY_OID, OID, SIGNATURE_ALGORITHMS } from './oids.js';
-import { MIN_RSA_BITS, modulusBits, parseRsaPublicKey } from './public-key.js';
+} from './der';
+import { CURVE_BY_OID, OID, SIGNATURE_ALGORITHMS } from './oids';
+import { MIN_RSA_BITS, modulusBits, parseRsaPublicKey } from './public-key';
 
 import type {
   AlgorithmSpec,

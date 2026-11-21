@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest';
 
 import { toBase64Url, utf8Encode, WebAuthnError } from '@utils';
 
-import { parseClientDataJSON, verifyClientData } from './client-data.js';
+import { parseClientDataJSON, verifyClientData } from './client-data';
 
 describe('clientDataJSON', () => {
   const encode = (value: unknown) => toBase64Url(utf8Encode(JSON.stringify(value)));

@@ -1,4 +1,4 @@
-import { WebAuthnError } from '../error/index.js';
+import { WebAuthnError } from '../error';
 
 export function concatBytes(...parts: readonly Uint8Array[]): Uint8Array {
   const out = new Uint8Array(parts.reduce((sum, p) => sum + p.length, 0));

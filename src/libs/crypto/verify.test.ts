@@ -1,11 +1,11 @@
 import { describe, expect, it } from 'vitest';
 
 import { utf8Encode } from '@utils';
-import { SoftAuthenticator, testCrypto as crypto } from '../../../tests/index.js';
 
-import { COSEAlgorithm } from '../cose/index.js';
+import { SoftAuthenticator, testCrypto as crypto } from '../../../tests';
+import { COSEAlgorithm } from '../cose';
 
-import { verifyCoseSignature } from './verify.js';
+import { verifyCoseSignature } from './verify';
 
 describe('verifyCoseSignature', () => {
   it.each([COSEAlgorithm.ES256, COSEAlgorithm.EdDSA, COSEAlgorithm.RS256] as const)(

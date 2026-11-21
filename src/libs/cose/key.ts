@@ -1,8 +1,8 @@
 import { toBase64Url, WebAuthnError } from '@utils';
 
-import { decodeCborFirst, isCborMap } from '../cbor/index.js';
+import { decodeCborFirst, isCborMap } from '../cbor';
 
-import { COSEKeyParam, COSEKeyType, getAlgorithmSpec } from './algorithms.js';
+import { COSEKeyParam, COSEKeyType, getAlgorithmSpec } from './algorithms';
 
 import type { CborValue, CosePublicKey, CoseWebCryptoParams } from '@types';
 

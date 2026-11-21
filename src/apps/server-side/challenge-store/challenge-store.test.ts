@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 
-import { MemoryChallengeStore } from './challenge-store.js';
+import { MemoryChallengeStore } from './challenge-store';
 
 describe('MemoryChallengeStore', () => {
   it('expires, evicts and hands out each challenge once', () => {

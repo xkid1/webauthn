@@ -8,4 +8,4 @@ export {
   readUint32BE,
   timingSafeEqual,
   toHex,
-} from './bytes.js';
+} from './bytes';

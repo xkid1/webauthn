@@ -1,12 +1,12 @@
 import { WebAuthnError } from '@utils';
 
-import { verifyAndroidKeyAttestation } from './formats/android-key.js';
-import { verifyAndroidSafetyNetAttestation } from './formats/android-safetynet.js';
-import { verifyAppleAttestation } from './formats/apple.js';
-import { verifyFidoU2fAttestation } from './formats/fido-u2f.js';
-import { verifyNoneAttestation } from './formats/none.js';
-import { verifyPackedAttestation } from './formats/packed.js';
-import { verifyTpmAttestation } from './formats/tpm.js';
+import { verifyAndroidKeyAttestation } from './formats/android-key';
+import { verifyAndroidSafetyNetAttestation } from './formats/android-safetynet';
+import { verifyAppleAttestation } from './formats/apple';
+import { verifyFidoU2fAttestation } from './formats/fido-u2f';
+import { verifyNoneAttestation } from './formats/none';
+import { verifyPackedAttestation } from './formats/packed';
+import { verifyTpmAttestation } from './formats/tpm';
 
 import type { AttestationContext, AttestationResult, AttestationVerifier } from '@types';
 

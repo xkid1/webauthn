@@ -1,8 +1,8 @@
 import { copyBytes, WebAuthnError } from '@utils';
 
-import { coseKeyToJwk, parseCoseKey } from '../cose/index.js';
+import { coseKeyToJwk, parseCoseKey } from '../cose';
 
-import { derToRawSignature } from './ecdsa.js';
+import { derToRawSignature } from './ecdsa';
 
 import type {
   AlgorithmSpec,

@@ -16,8 +16,8 @@ import {
   WebAuthnError,
 } from '@utils';
 
-import { makeChallenge } from '../challenge/index.js';
-import { assertAuthenticationResponse, toDescriptors } from '../response/index.js';
+import { makeChallenge } from '../challenge';
+import { assertAuthenticationResponse, toDescriptors } from '../response';
 
 import type {
   GenerateAuthenticationOptionsInput,

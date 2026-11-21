@@ -8,9 +8,9 @@ import {
   makeCertificate,
   makeTestRoot,
   type TestCertificate,
-} from '../../../../tests/index.js';
+} from '../../../../tests';
 
-import { verifyPackedAttestation } from './packed.js';
+import { verifyPackedAttestation } from './packed';
 
 describe('packed attestation (§8.2)', () => {
   const aaguid = webcrypto.getRandomValues(new Uint8Array(16));

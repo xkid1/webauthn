@@ -1,1 +1,1 @@
-export * from './challenge-store.js';
+export * from './challenge-store';

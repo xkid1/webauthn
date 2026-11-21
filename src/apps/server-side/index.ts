@@ -7,14 +7,11 @@ export { createAndroidKeyVerifier, createAndroidSafetyNetVerifier } from '@libs'
 export {
   generateAuthenticationOptions,
   verifyAuthenticationResponse,
-} from './authentication/index.js';
-export { MemoryChallengeStore } from './challenge-store/index.js';
-export { resolveConfig } from './config/index.js';
-export {
-  generateRegistrationOptions,
-  verifyRegistrationResponse,
-} from './registration/index.js';
-export { createWebAuthnServer } from './server/index.js';
+} from './authentication';
+export { MemoryChallengeStore } from './challenge-store';
+export { resolveConfig } from './config';
+export { generateRegistrationOptions, verifyRegistrationResponse } from './registration';
+export { createWebAuthnServer } from './server';
 export type * from '@types';
 export {
   ERROR_HINTS,

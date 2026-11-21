@@ -1,14 +1,9 @@
 import { describe, expect, it } from 'vitest';
 
-import {
-  TEST_RP as base,
-  SoftAuthenticator,
-  TEST_USER as user,
-} from '../../../../tests/index.js';
+import { TEST_RP as base, SoftAuthenticator, TEST_USER as user } from '../../../../tests';
+import { MemoryChallengeStore } from '../challenge-store';
 
-import { MemoryChallengeStore } from '../challenge-store/index.js';
-
-import { createWebAuthnServer } from './server.js';
+import { createWebAuthnServer } from './server';
 
 describe('createWebAuthnServer', () => {
   it('runs both ceremonies with single-use session challenges', async () => {

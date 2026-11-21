@@ -1,4 +1,4 @@
-import type { Base64URLString, CollectedClientData } from '../webauthn/index.js';
+import type { Base64URLString, CollectedClientData } from '../webauthn';
 
 export interface ParsedClientData {
   readonly raw: Uint8Array;

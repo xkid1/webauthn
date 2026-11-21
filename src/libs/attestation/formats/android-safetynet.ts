@@ -14,11 +14,11 @@ import {
   importCertificateKey,
   OID,
   parseCertificate,
-} from '../../asn1/index.js';
-import { COSEAlgorithm, getAlgorithmSpec } from '../../cose/index.js';
-import { rawToDerSignature, verifyWithKey } from '../../crypto/index.js';
-import { assertOnlyKeys, stmtBytes } from '../statement.js';
-import { verifyCertificateChain } from '../trust.js';
+} from '../../asn1';
+import { COSEAlgorithm, getAlgorithmSpec } from '../../cose';
+import { rawToDerSignature, verifyWithKey } from '../../crypto';
+import { assertOnlyKeys, stmtBytes } from '../statement';
+import { verifyCertificateChain } from '../trust';
 
 import type {
   AndroidSafetyNetVerifierOptions,

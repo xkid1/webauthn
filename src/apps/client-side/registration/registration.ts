@@ -1,6 +1,6 @@
-import { beginCeremony, toCeremonyError } from '../ceremony/index.js';
-import { getCredentialsContainer } from '../environment/index.js';
-import { registrationToJSON, toCreationOptions } from '../serialize/index.js';
+import { beginCeremony, toCeremonyError } from '../ceremony';
+import { getCredentialsContainer } from '../environment';
+import { registrationToJSON, toCreationOptions } from '../serialize';
 
 import type { RegistrationResponseJSON, StartRegistrationOptions } from '@types';
 

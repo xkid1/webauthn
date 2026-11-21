@@ -62,6 +62,7 @@ for (const [subpath, target] of Object.entries(pkg.exports)) {
 
 if (problems.length > 0) {
   console.error(problems.join('\n'));
-  process.exit(1);
+  process.exitCode = 1;
+} else {
+  console.log('verify-dist: OK');
 }
-console.log('verify-dist: OK');

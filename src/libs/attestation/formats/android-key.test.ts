@@ -9,9 +9,9 @@ import {
   rejection,
   type TestCertificate,
   verifyStatement,
-} from '../../../../tests/index.js';
+} from '../../../../tests';
 
-import { createAndroidKeyVerifier, verifyAndroidKeyAttestation } from './android-key.js';
+import { createAndroidKeyVerifier, verifyAndroidKeyAttestation } from './android-key';
 
 describe('android-key attestation (§8.4)', () => {
   attestationTrustSuite({

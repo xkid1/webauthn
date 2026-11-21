@@ -1,1 +1,1 @@
-export type * from './cbor.js';
+export type * from './cbor';

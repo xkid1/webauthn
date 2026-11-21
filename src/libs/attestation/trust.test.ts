@@ -6,9 +6,9 @@ import {
   makeCertificate,
   makeTestRoot,
   ROOT_SUBJECT,
-} from '../../../tests/index.js';
+} from '../../../tests';
 
-import { verifyCertificateChain } from './trust.js';
+import { verifyCertificateChain } from './trust';
 
 describe('verifyCertificateChain', () => {
   it('trusts only chains that end at a valid configured anchor', async () => {

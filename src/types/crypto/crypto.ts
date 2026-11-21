@@ -1,5 +1,5 @@
-import type { AlgorithmSpec, CosePublicKey } from '../cose/index.js';
-import type { CryptoKeyLike, CryptoLike } from '../runtime/index.js';
+import type { AlgorithmSpec, CosePublicKey } from '../cose';
+import type { CryptoKeyLike, CryptoLike } from '../runtime';
 
 /** Input for `verifyWithKey`: verify with an already-imported key. */
 export interface VerifyWithKeyOptions {

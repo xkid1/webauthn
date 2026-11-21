@@ -1,4 +1,4 @@
-import { WebAuthnError } from '../error/index.js';
+import { WebAuthnError } from '../error';
 
 import type { CryptoGlobal, CryptoLike } from '@types';
 

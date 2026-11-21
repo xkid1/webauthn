@@ -9,11 +9,11 @@ import {
   isCertificateAuthority,
   OID,
   parseCertificate,
-} from '../../asn1/index.js';
-import { getAlgorithmSpec, parseCoseKey } from '../../cose/index.js';
-import { verifyWithKey } from '../../crypto/index.js';
-import { assertOnlyKeys, stmtBytes, stmtCertificates, stmtNumber } from '../statement.js';
-import { verifyCertificateChain } from '../trust.js';
+} from '../../asn1';
+import { getAlgorithmSpec, parseCoseKey } from '../../cose';
+import { verifyWithKey } from '../../crypto';
+import { assertOnlyKeys, stmtBytes, stmtCertificates, stmtNumber } from '../statement';
+import { verifyCertificateChain } from '../trust';
 
 import {
   parseCertInfo,
@@ -22,7 +22,7 @@ import {
   TPM_ECC_CURVE,
   TPM_GENERATED_VALUE,
   TPM_ST_ATTEST_CERTIFY,
-} from './tpm-structures.js';
+} from './tpm-structures';
 
 import type {
   AttestationVerifier,

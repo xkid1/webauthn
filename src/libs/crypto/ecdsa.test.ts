@@ -4,7 +4,7 @@ import { describe, expect, it } from 'vitest';
 
 import { WebAuthnError } from '@utils';
 
-import { derToRawSignature, rawToDerSignature } from './ecdsa.js';
+import { derToRawSignature, rawToDerSignature } from './ecdsa';
 
 describe('ECDSA DER', () => {
   it('converts raw <-> DER for P-256 / P-521 sizes', () => {

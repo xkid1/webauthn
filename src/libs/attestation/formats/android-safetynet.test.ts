@@ -9,12 +9,12 @@ import {
   verifyStatement,
   type SafetyNetTamper,
   type TestCertificate,
-} from '../../../../tests/index.js';
+} from '../../../../tests';
 
 import {
   createAndroidSafetyNetVerifier,
   verifyAndroidSafetyNetAttestation,
-} from './android-safetynet.js';
+} from './android-safetynet';
 
 describe('android-safetynet attestation (§8.5)', () => {
   attestationTrustSuite({

@@ -11,6 +11,7 @@ import {
   verifyRegistrationResponse,
 } from '@apps';
 import { COSEAlgorithm } from '@libs';
+
 import {
   type Alg,
   androidKeyAttestation,
@@ -91,9 +92,15 @@ const anchored = resolveConfig({
   ...base,
   attestation: 'direct',
   trustAnchors: [root.der],
-  // Pre-generated SafetyNet responses must stay "fresh" for the whole bench run.
+  // Pre-generated SafetyNet responses must stay "fresh" for the whole bench run. The
+  // timestamp is fixed at import time, so a backwards wall-clock step (NTP or WSL2 time
+  // resync) would otherwise make it look "in the future". Bench-only tolerance; the
+  // library default (clockSkewMs: 0) is unchanged.
   attestationVerifiers: {
-    'android-safetynet': createAndroidSafetyNetVerifier({ maxAgeMs: 3_600_000 }),
+    'android-safetynet': createAndroidSafetyNetVerifier({
+      maxAgeMs: 3_600_000,
+      clockSkewMs: 60_000,
+    }),
   },
 });
 

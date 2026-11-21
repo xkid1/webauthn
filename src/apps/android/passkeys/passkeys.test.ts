@@ -4,15 +4,15 @@ import { describe, expect, it } from 'vitest';
 
 import { createWebAuthnServer } from '@apps';
 import { fromBase64Url } from '@utils';
-import { RP_ID, SoftAuthenticator } from '../../../../tests/index.js';
 
-import { androidOriginFromFingerprint } from '../origin/index.js';
+import { RP_ID, SoftAuthenticator } from '../../../../tests';
+import { androidOriginFromFingerprint } from '../origin';
 
 import {
   createAndroidPasskeyClient,
   normaliseRegistration,
   toAndroidError,
-} from './passkeys.js';
+} from './passkeys';
 
 import type { AndroidCredentialBridge } from '@types';
 

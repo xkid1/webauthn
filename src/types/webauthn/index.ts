@@ -1,1 +1,1 @@
-export type * from './webauthn.js';
+export type * from './webauthn';

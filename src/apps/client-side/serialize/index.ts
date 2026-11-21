@@ -1,1 +1,1 @@
-export * from './serialize.js';
+export * from './serialize';

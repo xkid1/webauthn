@@ -5,8 +5,8 @@ import {
   isCertificateAuthority,
   parseCertificate,
   signatureSpecFor,
-} from '../asn1/index.js';
-import { verifyWithKey } from '../crypto/index.js';
+} from '../asn1';
+import { verifyWithKey } from '../crypto';
 
 import type { CertificateChainOptions, CryptoLike, X509Certificate } from '@types';
 

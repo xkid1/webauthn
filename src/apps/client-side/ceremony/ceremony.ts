@@ -1,6 +1,6 @@
 import { isRecord, WebAuthnError } from '@utils';
 
-import { createAbortController } from '../environment/index.js';
+import { createAbortController } from '../environment';
 
 import type {
   AbortControllerLike,

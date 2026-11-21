@@ -1,6 +1,6 @@
 import { WebAuthnError } from '@utils';
 
-import { bitStringBytes, content, expectTag, readChildren, readTlv, Tag } from './der.js';
+import { bitStringBytes, content, expectTag, readChildren, readTlv, Tag } from './der';
 
 import type { RsaPublicKey } from '@types';
 

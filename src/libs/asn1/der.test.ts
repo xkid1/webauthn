@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 
-import { readTlv } from './der.js';
+import { readTlv } from './der';
 
 describe('DER high-tag-number form', () => {
   const highTag = Uint8Array.of(0xbf, 0x85, 0x3e, 0x03, 0x02, 0x01, 0x00); // [702] { INTEGER 0 }

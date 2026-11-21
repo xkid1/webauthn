@@ -1,4 +1,4 @@
-import type { COSEAlgorithmIdentifier } from '../webauthn/index.js';
+import type { COSEAlgorithmIdentifier } from '../webauthn';
 
 export type HashName = 'SHA-256' | 'SHA-384' | 'SHA-512';
 

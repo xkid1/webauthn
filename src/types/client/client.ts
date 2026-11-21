@@ -1,10 +1,10 @@
-import type { AbortSignalLike, FetchLike } from '../runtime/index.js';
+import type { AbortSignalLike, FetchLike } from '../runtime';
 import type {
   AuthenticationResponseJSON,
   PublicKeyCredentialCreationOptionsJSON,
   PublicKeyCredentialRequestOptionsJSON,
   RegistrationResponseJSON,
-} from '../webauthn/index.js';
+} from '../webauthn';
 
 export interface StartRegistrationOptions {
   readonly optionsJSON: PublicKeyCredentialCreationOptionsJSON;

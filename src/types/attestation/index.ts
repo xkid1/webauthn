@@ -1,1 +1,1 @@
-export type * from './attestation.js';
+export type * from './attestation';

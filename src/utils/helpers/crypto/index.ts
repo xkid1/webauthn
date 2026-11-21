@@ -1,1 +1,1 @@
-export { randomBytes, resolveCrypto, sha256 } from './crypto.js';
+export { randomBytes, resolveCrypto, sha256 } from './crypto';

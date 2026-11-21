@@ -1,4 +1,4 @@
-import { getPublicKeyCredential, isSecureContext } from '../environment/index.js';
+import { getPublicKeyCredential, isSecureContext } from '../environment';
 
 import type { Base64URLString, BrowserGlobals, ClientCapabilities } from '@types';
 

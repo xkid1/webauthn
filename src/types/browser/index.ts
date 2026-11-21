@@ -1,1 +1,1 @@
-export type * from './browser.js';
+export type * from './browser';

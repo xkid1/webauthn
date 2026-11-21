@@ -1,10 +1,10 @@
 import { concatBytes, WebAuthnError } from '@utils';
 
-import { importCertificateKey, parseCertificate } from '../../asn1/index.js';
-import { COSEAlgorithm, getAlgorithmSpec, parseCoseKey } from '../../cose/index.js';
-import { verifyWithKey } from '../../crypto/index.js';
-import { assertOnlyKeys, stmtBytes, stmtCertificates } from '../statement.js';
-import { verifyCertificateChain } from '../trust.js';
+import { importCertificateKey, parseCertificate } from '../../asn1';
+import { COSEAlgorithm, getAlgorithmSpec, parseCoseKey } from '../../cose';
+import { verifyWithKey } from '../../crypto';
+import { assertOnlyKeys, stmtBytes, stmtCertificates } from '../statement';
+import { verifyCertificateChain } from '../trust';
 
 import type { AttestationVerifier } from '@types';
 

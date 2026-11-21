@@ -9,10 +9,10 @@ import {
   readChildren,
   readTlv,
   Tag,
-} from '../../asn1/index.js';
-import { parseCoseKey } from '../../cose/index.js';
-import { assertOnlyKeys, stmtCertificates } from '../statement.js';
-import { verifyCertificateChain } from '../trust.js';
+} from '../../asn1';
+import { parseCoseKey } from '../../cose';
+import { assertOnlyKeys, stmtCertificates } from '../statement';
+import { verifyCertificateChain } from '../trust';
 
 import type { AttestationVerifier } from '@types';
 

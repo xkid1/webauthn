@@ -1,8 +1,8 @@
 import { describe, expect, it } from 'vitest';
 
-import { attestationContext } from '../../../../tests/index.js';
+import { attestationContext } from '../../../../tests';
 
-import { verifyNoneAttestation } from './none.js';
+import { verifyNoneAttestation } from './none';
 
 import type { CborValue } from '@types';
 

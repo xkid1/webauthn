@@ -1,1 +1,1 @@
-export type * from './client-data.js';
+export type * from './client-data';

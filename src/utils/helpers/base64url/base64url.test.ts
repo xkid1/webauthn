@@ -1,10 +1,10 @@
 import { describe, expect, it } from 'vitest';
 
-import { randomBytes } from '../crypto/index.js';
-import { WebAuthnError } from '../error/index.js';
-import { utf8Encode } from '../utf8/index.js';
+import { randomBytes } from '../crypto';
+import { WebAuthnError } from '../error';
+import { utf8Encode } from '../utf8';
 
-import { fromBase64Url, isBase64Url, toBase64Url, toBytes } from './base64url.js';
+import { fromBase64Url, isBase64Url, toBase64Url, toBytes } from './base64url';
 
 describe('base64url', () => {
   it('round-trips every length 0..64', () => {

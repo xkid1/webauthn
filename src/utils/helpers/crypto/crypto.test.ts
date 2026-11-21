@@ -1,10 +1,10 @@
 import { describe, expect, it } from 'vitest';
 
-import { toHex } from '../bytes/index.js';
-import { WebAuthnError } from '../error/index.js';
-import { utf8Encode } from '../utf8/index.js';
+import { toHex } from '../bytes';
+import { WebAuthnError } from '../error';
+import { utf8Encode } from '../utf8';
 
-import { randomBytes, resolveCrypto, sha256 } from './crypto.js';
+import { randomBytes, resolveCrypto, sha256 } from './crypto';
 
 import type { CryptoLike } from '@types';
 

@@ -7,4 +7,4 @@ export {
   originHost,
   requireRecord,
   requireString,
-} from './guards.js';
+} from './guards';

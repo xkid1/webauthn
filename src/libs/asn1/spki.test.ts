@@ -6,12 +6,11 @@ import {
   makeTestRoot,
   ROOT_SUBJECT,
   SoftAuthenticator,
-} from '../../../tests/index.js';
+} from '../../../tests';
+import { COSEAlgorithm, parseCoseKey } from '../cose';
 
-import { COSEAlgorithm, parseCoseKey } from '../cose/index.js';
-
-import { certificateKeyMatchesCose } from './spki.js';
-import { parseCertificate } from './x509.js';
+import { certificateKeyMatchesCose } from './spki';
+import { parseCertificate } from './x509';
 
 describe('certificateKeyMatchesCose', () => {
   const algs: Alg[] = [COSEAlgorithm.ES256, COSEAlgorithm.RS256, COSEAlgorithm.EdDSA];
